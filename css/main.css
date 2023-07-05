@@ -1,0 +1,1854 @@
+/*
+*
+* Site Name: The Route
+* Date Modified: 2021-06-18
+* Design : Devlina Banerji (devlina@tingmail.in), Dhakshin Chandrasekar(dhakshin@tingmail.in), Amitha Madhan(amitha@tingmail.in)
+* Coding : Manoj Rajendiran(manoj@tingmail.in), Jess Divyan(jess@tingmail.in)
+*
+*/
+
+/* ==================================================================
+1.0 Custom Font Declarations(if any)
+================================================================== */
+@font-face {
+  font-family: "Plat Nomor";
+  src: url("../fonts/PlatNomor.woff2") format("woff2"),
+    url("../fonts/PlatNomor.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Be Vietnam";
+  src: url("../fonts/BeVietnam-Regular.woff2") format("woff2"),
+    url("../fonts/BeVietnam-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Be Vietnam";
+  src: url("../fonts/BeVietnam-Bold.woff2") format("woff2"),
+    url("../fonts/BeVietnam-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+/* ==================================================================
+2.0 Typography (Base font size 16px)
+================================================================== */
+body {
+  background: #d38c23;
+  font-family: "Be Vietnam";
+  font-weight: normal;
+  font-size: 1vw;
+  overflow: hidden;
+}
+
+body.loaded {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.disable-events {
+  pointer-events: none;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.color-black {
+  color: #000;
+}
+
+.color-yellow-sea {
+  color: #fcad06;
+}
+
+.color-brand-punch {
+  color: #d38c23;
+}
+
+.display-ib {
+  display: inline-block;
+}
+
+.heading-normal {
+  font-family: "Plat Nomor";
+  font-size: 2.625em;
+  text-transform: uppercase;
+}
+
+.para-large {
+  font-size: 1.875em;
+  line-height: 1.2;
+  margin-bottom: 1em;
+}
+
+.para-normal {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+.para-small {
+  font-size: 1.325em;
+  line-height: 1.1;
+}
+
+.nav-link {
+  position: relative;
+  color: #fff;
+  font-family: "Plat Nomor";
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 1.5em;
+  line-height: normal;
+  padding: 0 0.125em;
+  margin: 0.5em 1.25em;
+  z-index: 2;
+}
+
+.nav-link:last-child {
+  margin-right: 0;
+}
+
+.nav-link.logo-image {
+  margin: 0 1em 0 0;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: #000;
+}
+
+.logo-image img {
+  max-width: 3.92em;
+}
+
+.light-mode .nav-link {
+  color: #000;
+}
+
+.light-mode .nav-link:hover,
+.light-mode .nav-link:focus,
+.light-mode .nav-link.active {
+  color: #fff;
+}
+
+.light-mode .logo-image {
+  mix-blend-mode: multiply;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #fff6f1;
+}
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #524b48;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #000;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #fcad06;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1199.98px) {
+  body {
+    font-size: 12px;
+  }
+  .footer {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  /* body {
+    font-size: 2.165vh;
+  } */
+  body {
+    font-size: 1vw;
+  }
+  .footer {
+    font-size: 16px;
+  }
+}
+
+@media (min-height: 800px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    font-size: 1vw;
+  }
+}
+
+/* ==================================================================
+3.0 Talents Page Common declarations
+================================================================== */
+.talents-nav {
+  position: absolute;
+  left: 0;
+  padding-top: 10vh;
+  width: 100%;
+}
+
+#talents-slider {
+  width: 100%;
+  height: 100vh;
+}
+
+.fullpage-sec {
+  background: #d38c23;
+  width: 100%;
+  height: 100%;
+}
+
+.fullpage-sec > .container-fluid {
+  height: 100%;
+}
+
+.fullpage-sec > .container-fluid > .row {
+  height: 100%;
+}
+
+.about-image {
+  position: relative;
+  padding-bottom: 1em;
+}
+
+.about-image::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  width: 26.875em;
+  height: 100%;
+  background: url("../images/stars-background.png") no-repeat center bottom
+    transparent;
+  background-size: contain;
+  mix-blend-mode: multiply;
+}
+
+.tr-content-wrapper {
+  padding-top: 38vh;
+  padding-left: 2.5em;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-image {
+  padding-top: 38vh;
+  text-align: center;
+}
+
+.talent-name {
+  position: relative;
+  padding: 0.3em 0.75em 0.2em;
+  margin-bottom: 0.5em;
+  background: url("../images/name-yellow-bg.png") no-repeat right center
+    transparent;
+  background-size: 100% 100%;
+  min-width: 4.62em;
+  text-align: center;
+  color: #000;
+}
+
+.light-mode .talent-name {
+  background-image: url("../images/name-black-bg.png");
+  color: #fff;
+}
+
+.talent-name.bg-texture-small {
+  background-image: url("../images/name-yellow-bg-small.png");
+}
+
+.light-mode .talent-name.bg-texture-small {
+  background-image: url("../images/name-black-bg-small.png");
+}
+
+.talent-name::before,
+.talent-name::after {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0;
+  height: 100%;
+  width: 1.35em;
+  background: url("../images/name-star-yellow.png") no-repeat center center
+    transparent;
+}
+
+.light-mode .talent-name::before,
+.light-mode .talent-name::after {
+  background-image: url("../images/name-star-black.png");
+}
+
+.talent-name::after {
+  left: auto;
+  right: -1.35em;
+}
+
+/* #talent-brief {
+  background: url("../images/atlee-brief-bg.jpg") no-repeat center right transparent;
+  background-size: cover;
+} */
+
+#talent-brief {
+  background: none #000;
+}
+
+.film-reel-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15.2em;
+  height: 100%;
+  background: none repeat-y center center transparent;
+  background-size: 100% auto;
+}
+
+.testimonial-image img {
+  width: 16.67em;
+}
+
+#talent-hero {
+  background: url("../images/full-bg_01.png") no-repeat right bottom transparent;
+  background-size: cover;
+}
+
+#talent-about {
+  background: url("../images/full-bg_02.png") no-repeat right bottom transparent;
+  background-size: cover;
+}
+
+#talent-testimonial {
+  background: url("../images/full-bg_04.png") no-repeat right bottom transparent;
+  background-size: cover;
+}
+
+.brief-bg-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: none no-repeat center right #000;
+  background-size: cover;
+}
+
+/* ==================================================================
+4.0 Talents Hero Images
+================================================================== */
+.hero-image img {
+  height: 75vh;
+  width: auto;
+  position: relative;
+  z-index: 2;
+}
+
+#talent-hero .talent-name::before,
+#talent-hero .talent-name::after {
+  display: none;
+}
+
+#talent-hero .talent-name {
+  position: absolute;
+  top: 38vh;
+  margin-left: -1.75em;
+  z-index: 1;
+}
+
+#talent-hero .our-talents {
+  position: absolute;
+  padding: 0.3em 0.75em 0.2em;
+  margin-bottom: 0.5em;
+  margin-left: -6.4em;
+  top: 38vh;
+  z-index: 1;
+}
+
+#talent-hero .our-talents::after {
+  content: "";
+  position: absolute;
+  top: 0.3em;
+  right: -1.3em;
+  width: 1.3em;
+  height: 4.75em;
+  background: url("../images/black-star-line.png") no-repeat bottom right
+    transparent;
+  background-size: contain;
+}
+
+.hero-stars-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  width: 80%;
+  height: 90%;
+  background: url("../images/big-stars-bg.png") no-repeat center bottom
+    transparent;
+  background-size: 100% auto;
+  mix-blend-mode: multiply;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev {
+  right: 2em;
+}
+
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  left: 2em;
+}
+
+.tr-content-wrapper p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  .talent-vijay #talent-hero .our-talents {
+    margin-left: 0;
+  }
+
+  .talent-vijay #talent-hero .our-talents {
+    margin-left: 0;
+  }
+
+  .talent-vijay .hero-image img {
+    left: -7em;
+  }
+
+  .talent-vijay #talent-hero .talent-name {
+    margin-left: -6em;
+  }
+}
+/* ==================================================================
+5.1 Dynamic
+Slide 2 About Image Sizes (width em = image width divided by 16)
+================================================================== */
+.about-image img {
+  position: relative;
+  z-index: 1;
+}
+
+.talent-atlee .about-image img {
+  width: 19em;
+}
+
+.talent-kathir .about-image img {
+  width: 17em;
+}
+
+.talent-vijay .about-image img {
+  width: 18.375em;
+}
+
+.talent-arjundas .about-image img {
+  width: 36.25em;
+}
+
+.talent-anjali .about-image img {
+  width: 21.5em;
+}
+
+.talent-keerthy .about-image img {
+  width: 26em;
+}
+
+.talent-kalyani .about-image img {
+  width: 17em;
+}
+
+.talent-samyuktha .about-image img {
+  width: 18.325em;
+}
+
+.talent-malavika .about-image img {
+  width: 16em;
+}
+
+.talent-rashmika .about-image img {
+  width: 24.6875em;
+}
+
+.talent-samantha .about-image img {
+  width: 27.1875em;
+}
+
+header nav {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 170px;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+header nav ul li {
+  transform: translateY(50px);
+  opacity: 0;
+}
+header nav ul li a {
+  display: block;
+  font-size: 2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+  font-weight: normal;
+  font-family: "Plat Nomor";
+  transition: all 0.2s ease-in-out;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+header nav ul li a:hover {
+  color: #e84a5f;
+}
+
+.toggle-btn {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  right: 1.5rem;
+  top: calc(15px + 0.5rem);
+  cursor: pointer;
+}
+.toggle-btn .bar {
+  width: 30px;
+  height: 2px;
+  margin: 7px auto;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+}
+.toggle-btn .bar:nth-child(2) {
+  width: 20px;
+}
+
+#toggle:checked ~ nav {
+  opacity: 1;
+  visibility: visible;
+}
+#toggle:checked ~ nav ul {
+  top: 70px;
+}
+#toggle:checked ~ nav ul li {
+  transform: translateY(0px);
+  opacity: 1;
+}
+#toggle:checked ~ nav ul li:nth-child(1) {
+  transition: all 0.3s cubic-bezier(0.6, 0, 0.8, 1.5) 0.1s;
+}
+#toggle:checked ~ nav ul li:nth-child(2) {
+  transition: all 0.3s cubic-bezier(0.6, 0, 0.8, 1.5) 0.2s;
+}
+#toggle:checked ~ nav ul li:nth-child(3) {
+  transition: all 0.3s cubic-bezier(0.6, 0, 0.8, 1.5) 0.3s;
+}
+#toggle:checked ~ nav ul li:nth-child(4) {
+  transition: all 0.3s cubic-bezier(0.6, 0, 0.8, 1.5) 0.4s;
+}
+#toggle:checked + label.toggle-btn .bar {
+  background-color: red;
+}
+#toggle:checked + label.toggle-btn .bar:nth-child(2) {
+  transform: translateX(50px);
+  opacity: 0;
+}
+#toggle:checked + label.toggle-btn .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+#toggle:checked + label.toggle-btn .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==================================================================
+5.2 Dynamic
+Slide 3 Background
+================================================================== */
+.talent-atlee .brief-bg-wrapper {
+  background-image: url("../images/atlee-brief-bg.jpg");
+}
+
+.talent-kathir .brief-bg-wrapper {
+  background-image: url("../images/kathir-brief-bg.jpg");
+}
+
+.talent-vijay .brief-bg-wrapper {
+  background-image: url("../images/vijay-brief-bg.jpg");
+}
+
+.talent-arjundas .brief-bg-wrapper {
+  background-image: url("../images/arjundas-brief-bg.jpg");
+}
+
+.talent-anjali .brief-bg-wrapper {
+  background-image: url("../images/anjali-brief-bg.jpg");
+}
+
+.talent-keerthy .brief-bg-wrapper {
+  background-image: url("../images/keerthy-brief-bg.jpg");
+}
+
+.talent-kalyani .brief-bg-wrapper {
+  background-image: url("../images/kalyani-brief-bg.jpg");
+}
+
+.talent-samyuktha .brief-bg-wrapper {
+  background-image: url("../images/samyuktha-brief-bg.jpg");
+}
+
+.talent-malavika .brief-bg-wrapper {
+  background-image: url("../images/malavika-brief-bg.jpg");
+}
+
+.talent-rashmika .brief-bg-wrapper {
+  background-image: url("../images/rashmika-brief-bg.jpg");
+}
+
+.talent-samantha .brief-bg-wrapper {
+  background-image: url("../images/samantha-brief-bg.jpg");
+}
+
+/* ==================================================================
+5.3 Dynamic
+Slide 4 Film Reel
+================================================================== */
+.talent-atlee .film-reel-container {
+  background-image: url("../images/atlee-reel.png");
+}
+
+.talent-kathir .film-reel-container {
+  background-image: url("../images/kathir-reel.png");
+}
+
+.talent-vijay .film-reel-container {
+  background-image: url("../images/vijay-reel.png");
+}
+
+.talent-arjundas .film-reel-container {
+  background-image: url("../images/arjundas-reel.png");
+}
+
+.talent-anjali .film-reel-container {
+  background-image: url("../images/anjali-reel.png");
+}
+
+.talent-keerthy .film-reel-container {
+  background-image: url("../images/keerthy-reel.png");
+}
+
+.talent-kalyani .film-reel-container {
+  background-image: url("../images/kalyani-reel.png");
+}
+
+.talent-samyuktha .film-reel-container {
+  background-image: url("../images/samyuktha-reel.png");
+}
+
+.talent-malavika .film-reel-container {
+  background-image: url("../images/malavika-reel.png");
+}
+
+.talent-rashmika .film-reel-container {
+  background-image: url("../images/rashmika-reel.png");
+}
+
+.talent-samantha .film-reel-container {
+  background-image: url("../images/samantha-reel.png");
+}
+/* ==================================================================
+5.4 Dynamic
+Slide 4 Design Element
+================================================================== */
+.talent-kathir .testimonial-image img {
+  width: 37em;
+  max-width: 100%;
+  transform: translate(-4em, -4em);
+}
+
+.talent-vijay .testimonial-image img {
+  width: 37em;
+  max-width: 100%;
+  transform: translate(-4em, -4em);
+}
+
+.talent-vijay .testimonial-image,
+.talent-malavika .testimonial-image {
+  margin-right: -1em;
+}
+
+/* ==================================================================
+6.0 Responsive styles
+================================================================== */
+@media (max-width: 1199.98px) {
+  .tr-content-wrapper,
+  .testimonial-image {
+    padding-top: 0;
+  }
+}
+@media (max-width: 991.98px) {
+  #talents-slider {
+    height: auto;
+  }
+  .para-large,
+  .para-normal {
+    font-size: 1.5em;
+    line-height: 1.35;
+  }
+  #talents-slider .swiper-wrapper {
+    webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .fullpage-sec {
+    padding: 3em 1em;
+  }
+  .tr-content-wrapper {
+    padding-top: 3em;
+    padding-left: 0;
+    /* text-align: center; */
+  }
+  .testimonial-image {
+    padding-top: 2em;
+  }
+  #talent-brief.fullpage-sec {
+    padding-top: 0;
+  }
+  .brief-bg-wrapper {
+    position: relative;
+    height: 60vh;
+    margin-left: -1em;
+    margin-right: -1em;
+    width: calc(100% + 2em);
+  }
+  #talent-testimonial .tr-content-wrapper {
+    padding-top: 0;
+  }
+  #talent-hero {
+    position: relative;
+    padding-top: 6rem;
+    padding-bottom: 0;
+    height: auto;
+  }
+  #talent-hero::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 3px;
+    background: url("../images/gradient-line-mobile.png") no-repeat center
+      bottom transparent;
+    background-size: cover;
+    z-index: 1;
+  }
+  .hero-stars-bg {
+    width: 100%;
+  }
+  .hero-image img {
+    width: 80vw;
+    height: auto;
+  }
+  #talent-hero .our-talents,
+  #talent-hero .talent-name {
+    position: relative;
+    top: 0;
+    margin-left: 0;
+  }
+  #talent-hero .our-talents {
+    margin-bottom: 1em;
+  }
+  #talent-hero .our-talents::after {
+    top: 0.1em;
+    right: -0.5em;
+    width: 1.3em;
+    height: 3.75em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ==================================================================
+4.0 About page
+================================================================== */
+.page-hero {
+  width: 100%;
+  height: 100vh;
+}
+
+.about-page,
+.home-page {
+  background: #fff6f1;
+}
+
+.about-page .hero-image {
+  width: 100%;
+  height: 100%;
+  background: url("../images/about-hero.jpg") no-repeat center bottom
+    transparent;
+  background-size: cover;
+}
+
+.home-page .hero-image {
+  width: 100%;
+  height: 100%;
+  background: url("../images/home-hero-desktop.jpg") no-repeat center bottom
+    transparent;
+  background-size: cover;
+}
+
+.home-page .hero-mobile {
+  background-image: url("../images/home-hero-mobile.jpg");
+}
+
+.about-page .hero-mobile {
+  background-image: url("../images/about-hero-mobile.jpg");
+}
+
+.page-template .para-normal {
+  color: #524b48;
+  line-height: 1.5;
+  max-width: 32em;
+  margin: 0 auto 1.3em;
+}
+
+.page-template .heading-normal {
+  color: #524b48;
+  line-height: 1.12;
+  max-width: 18.5em;
+  margin: 0 auto 0.5em;
+}
+
+.page-template .heading-normal.highlight-heading {
+  color: #000;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.page-template .heading-normal.max-width-100 {
+  max-width: 100%;
+}
+
+.about-page .image-holder {
+  margin-bottom: 2.5em;
+}
+
+.about-page .image-holder.nomargin {
+  margin: 0;
+}
+
+.img-fw {
+  width: 100%;
+  height: auto;
+}
+
+.our-philosophy {
+  width: 90%;
+  max-width: 64vw;
+  padding: 3em 0 2em;
+  margin: 0 auto;
+  background: url("../images/our-philiosophy-bg.jpg") no-repeat center top
+    transparent;
+  background-size: cover;
+}
+
+.about-award {
+  position: relative;
+  display: inline-block;
+  padding: 3em 0 0;
+}
+
+.about-award::before {
+  content: "";
+  position: absolute;
+  left: 2%;
+  top: 0;
+  width: 96%;
+  height: 100%;
+  background: url("../images/about-award-bg.jpg") no-repeat center top
+    transparent;
+  background-size: cover;
+}
+
+.about-award > * {
+  position: relative;
+}
+
+.about-page .our-philosophy .heading-normal {
+  color: #fff;
+}
+
+.about-page .our-philosophy .heading-normal.highlight-heading {
+  margin-top: 0;
+  color: #000;
+}
+
+.about-page .our-philosophy .para-normal {
+  color: #000;
+  line-height: 1.25;
+  max-width: 100%;
+}
+
+.about-award .heading-normal {
+  color: #000;
+}
+
+.about-stars-bg {
+  position: absolute;
+  left: -50%;
+  bottom: 0;
+  width: 100%;
+  height: 58%;
+  background: url("../images/about-award-star.png") repeat-x bottom right
+    transparent;
+  background-size: auto 100%;
+  mix-blend-mode: multiply;
+}
+
+.carousel-testi-wrapper {
+  position: relative;
+  padding: 4em 0 0;
+  margin-top: 4em;
+  background: url("../images/talents-carousel-bg.jpg") no-repeat center top
+    transparent;
+  background-size: cover;
+}
+
+.about-page .carousel-testi-wrapper {
+  margin-top: 0;
+}
+
+.no-margintop {
+  margin-top: 0 !important;
+}
+
+.testi-name {
+  font-size: 1.125em;
+  font-family: "Plat Nomor";
+  text-transform: uppercase;
+}
+
+#testimonials-slider-wrapper {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#testimonials-slider-wrapper .swiper-slide p {
+  color: #000 !important;
+}
+
+.testimonials-wrapper {
+  position: relative;
+  padding-bottom: 2em;
+}
+
+.about-page .testimonials-wrapper .heading-normal {
+  margin-top: 1em;
+}
+
+.left-testi-image {
+  content: "";
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  width: 20em;
+  max-width: 20vw;
+  height: 15em;
+  background: url("../images/testi-left.png") no-repeat left bottom transparent;
+  background-size: contain;
+  z-index: 2;
+}
+
+.right-testi-image {
+  content: "";
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  width: 23em;
+  max-width: 23vw;
+  height: 14em;
+  background: url("../images/testi-right.png") no-repeat right bottom
+    transparent;
+  background-size: contain;
+  z-index: 2;
+}
+
+.talents-carousel-wrapper {
+  position: relative;
+  margin-bottom: 4em;
+}
+
+/* .talents-carousel-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/talentcar-star-bg.png") repeat-x center top transparent;
+  mix-blend-mode: multiply;
+} */
+
+.carousel-testi-wrapper::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8em;
+  width: 100%;
+  height: 60%;
+  background: url("../images/talentcar-star-bg.png") repeat-x center top
+    transparent;
+  mix-blend-mode: multiply;
+}
+
+.talents-carousel-wrapper .heading-normal {
+  color: #fff;
+  margin-top: 0.5em;
+  padding: 0.5em 0.325em 0.325em;
+  line-height: 1;
+  background: url("../images/talentname-bg.png") no-repeat center center
+    transparent;
+  background-size: 100% 100%;
+  display: inline-block;
+  opacity: 0;
+  transition: none;
+}
+
+.talentcar-image {
+  display: inline-block;
+  position: relative;
+}
+
+.talentcar-image img {
+  position: relative;
+  z-index: 1;
+}
+
+.talentcar-image::before {
+  content: "";
+  position: absolute;
+  left: 1%;
+  top: 0;
+  width: 98%;
+  height: 100%;
+  background: url("../images/talent-slider-bg.png") no-repeat center bottom
+    transparent;
+  background-size: contain;
+}
+
+.talent-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.talents-carousel-wrapper .swiper-slide-active .heading-normal {
+  white-space: nowrap;
+  opacity: 1;
+  transition: all 0.35s ease-in;
+}
+
+#talents-carousel .heading-normal {
+  position: relative;
+}
+
+#talents-carousel .heading-normal::before,
+#talents-carousel .heading-normal::after {
+  content: "";
+  position: absolute;
+  left: -1em;
+  top: 0;
+  height: 100%;
+  width: 1em;
+  background: url("../images/name-star-black.png") no-repeat center center
+    transparent;
+}
+
+#talents-carousel .heading-normal::after {
+  left: auto;
+  right: -1em;
+}
+
+.trophy-inner-wrapper {
+  position: relative;
+  padding: 0 2em 1em;
+}
+
+.trophy-inner-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+.trophy-inner-wrapper::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background: url("../images/trophy-bg.jpg") no-repeat center bottom transparent;
+  background-size: cover;
+}
+
+.trophy-inner-wrapper .heading-normal {
+  margin-top: 1em;
+  color: #fff !important;
+}
+
+.page-template .image-holder.nav-star {
+  margin-top: -3.25em;
+}
+
+.page-template .heading-normal.first-heading {
+  margin-top: 1.25em;
+}
+
+.footer {
+  padding: 5em 0 4em;
+  background: #000;
+  color: #fff;
+  position: relative;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -6px;
+  width: 100%;
+  height: 6px;
+  background: url("../images/gradient-line-full.png") no-repeat center bottom
+    transparent;
+  background-size: 100%;
+  z-index: 1;
+}
+.footer p {
+  font-size: 0.875em;
+}
+
+.footer h3 {
+  color: #fcad06;
+  font-size: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.footer h4 {
+  font-size: 1.125em;
+  margin-bottom: 1em;
+}
+
+.footer a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 0.875em;
+}
+
+.footer a:hover,
+.footer a:focus {
+  opacity: 0.75;
+}
+
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer ul li {
+  margin: 0.5em 0;
+}
+
+.copyright-credits {
+  margin-top: 2em;
+}
+
+.sgicon-group a {
+  display: inline-block;
+  background: #fcad06;
+  margin: 0 0.05em;
+  border-radius: 100%;
+}
+
+.sgicon-group a img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+
+.contact-page .page-hero {
+  height: auto;
+  min-height: 100vh;
+  padding-top: calc(10vh + 10em);
+  background: url("../images/contact-us-bg.jpg") no-repeat center bottom
+    transparent;
+  background-size: cover;
+}
+
+.contact-page .page-hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 25%;
+  height: 60vh;
+  background: url("../images/stars-background-loop.png") repeat-x left top
+    transparent;
+  mix-blend-mode: multiply;
+}
+
+.contact-page .heading-normal {
+  margin-bottom: 0.25em !important;
+}
+.contact-page .para-normal {
+  max-width: none;
+}
+
+.page-template form {
+  margin-top: 2em;
+  padding-bottom: 4em;
+}
+
+.page-template input,
+.page-template textarea {
+  margin: 0.75em 0;
+  background: none transparent !important;
+  color: #000;
+  border-color: #000;
+}
+
+.form-control::-moz-placeholder {
+  color: #000;
+  opacity: 1;
+}
+.form-control::placeholder {
+  color: #000;
+  opacity: 1;
+}
+
+.form-control:focus {
+  color: #000;
+  border-color: #fff6f1;
+  outline: 0;
+  box-shadow: none;
+}
+
+form .btn,
+.route-btn {
+  padding: 0.5em 0.75em;
+  margin-top: -1em;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  line-height: 1;
+  background: url("../images/talentname-bg.png") no-repeat center center
+    transparent;
+  background-size: 100% 100%;
+  border-radius: 0;
+  border: none transparent;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.route-btn {
+  font-size: 1.35em;
+  margin-top: 0.25em;
+  padding: 0.5em 1em 0.625em;
+}
+
+.route-btn:hover,
+.route-btn:focus {
+  opacity: 0.75 !important;
+}
+
+form .note {
+  margin-bottom: 0;
+}
+
+.route-professions .image-holder {
+  position: relative;
+}
+
+.prof-image {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.tr-align .prof-image {
+  bottom: auto;
+  top: 0;
+  left: auto;
+  right: 0;
+}
+
+.tl-align .prof-image {
+  bottom: auto;
+}
+
+.bl-align .prof-image {
+  z-index: 1;
+}
+
+.br-align .prof-image {
+  z-index: 1;
+  left: auto;
+  right: 0;
+}
+
+.look-here {
+  margin-top: 5em;
+}
+
+/* Max Sizes */
+.vijay-home img {
+  max-width: 65vw;
+}
+
+.route-professions {
+  max-width: 65vw;
+  margin: 0 auto;
+}
+
+.look-here img {
+  max-width: 36vw;
+}
+
+.trophy-outer-wrapper img {
+  max-width: 16vw;
+}
+
+.hor-reel img {
+  max-width: 38vw;
+}
+
+.atlee-award img {
+  max-width: 64vw;
+}
+
+.helicopter img {
+  max-width: 30vw;
+  animation: shake 10s infinite cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+.phil-mirror img {
+  max-width: 44vw;
+}
+
+.director-prof .prof-image {
+  max-width: 118%;
+}
+
+.actress-prof .prof-image {
+  max-width: 100%;
+}
+
+.dance-prof .prof-image {
+  max-width: 100%;
+}
+
+.action-prof .prof-image {
+  max-width: 100%;
+}
+
+.absolute-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+}
+
+#navbarSupportedContent {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  /* margin-top: -6em;
+  padding-top: 6em; */
+  background: #fff6f1;
+}
+
+.nav-item .nav-link {
+  color: #524b48;
+}
+
+.nav-item .nav-link:hover,
+.nav-item .nav-link:focus,
+.nav-item .nav-link.active {
+  color: #000;
+}
+
+.navbar-toggler-icon {
+  background: url("../images/hamburger-opened.png") no-repeat center center
+    transparent;
+  background-size: contain;
+}
+
+.collapsed .navbar-toggler-icon {
+  background-image: url("../images/hamburger-closed.png");
+}
+
+button.navbar-toggler {
+  position: relative;
+  margin-top: 12px;
+  z-index: 10;
+  box-shadow: none !important;
+}
+
+.mobile-logo-image {
+  display: block;
+  position: absolute;
+  left: 1.5rem;
+  top: 0.5rem;
+  mix-blend-mode: multiply;
+  width: 3.5rem;
+  z-index: 2;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.page-template .page-content {
+  overflow: hidden;
+}
+
+.talent-page .talents-carousel-wrapper,
+.talent-page.talents-carousel-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 280px;
+  margin-bottom: 0;
+  z-index: 10;
+  background: #fff6f1;
+  padding-top: 16px;
+  visibility: hidden;
+  transform: translateY(280px);
+  transition: all 0.5s ease-in;
+}
+
+.talent-page .talents-carousel-wrapper.show,
+.talent-page.talents-carousel-wrapper.show {
+  transform: translateY(0px);
+  visibility: visible;
+}
+
+.talent-page .talents-carousel-wrapper .heading-normal,
+.talent-page.talents-carousel-wrapper .heading-normal {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: normal;
+  padding: 0.5em 0 0;
+  background: none transparent;
+  margin: 0;
+  letter-spacing: 0.05em;
+  display: block;
+  color: #524b48;
+  opacity: 1;
+}
+
+.talent-page .talents-carousel-wrapper .swiper-slide,
+.talent-page.talents-carousel-wrapper .swiper-slide {
+  text-align: center;
+  width: 240px;
+}
+
+.talent-page .talentcar-image img {
+  max-width: 210px;
+}
+
+.talent-page .talents-carousel-wrapper .swiper-button-next:after,
+.talent-page .talents-carousel-wrapper .swiper-button-prev:after,
+.talent-page.talents-carousel-wrapper .swiper-button-next:after,
+.talent-page.talents-carousel-wrapper .swiper-button-prev:after {
+  color: #bf8129;
+}
+
+.contact-form-wrapper {
+  padding: 1rem;
+}
+
+.subscribe-label.error {
+  color: red;
+}
+
+.subscribe-label.success {
+  color: green;
+}
+/* Scroll Reveal */
+
+.page-hero:not(.no-reveal),
+.trophy-inner-wrapper,
+.talents-carousel-wrapper:not(.no-reveal),
+.page-template .heading-normal:not(.no-reveal),
+.page-template .para-normal:not(.no-reveal),
+.page-template .para-small:not(.no-reveal),
+input,
+textarea,
+.helicopter-desktop {
+  visibility: hidden;
+}
+
+/* Static Pages Font sizes */
+
+body.page-template {
+  font-size: 1vw;
+}
+
+@media (max-width: 1399.98px) {
+  body.page-template {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  body.page-template {
+    font-size: 14px;
+  }
+  .page-hero {
+    height: calc(100vw * 0.55);
+  }
+  body.page-template .talents-nav {
+    padding-top: 3vw;
+  }
+  .our-philosophy {
+    max-width: 80vw;
+  }
+}
+
+@media (max-width: 991.98px) {
+  body.page-template {
+    font-size: 12px;
+  }
+  .page-hero {
+    height: calc(100vw * 1.55);
+  }
+  .footer {
+    padding: 3em 0 2em;
+  }
+  .contact-page .page-hero {
+    padding-top: 6rem;
+  }
+  form .btn,
+  .route-btn {
+    font-size: 1.25rem;
+  }
+  .talent-page .talents-carousel-wrapper:before,
+  .talent-page.talents-carousel-wrapper:before {
+    content: "Our Talents";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -1.25em;
+    width: 100%;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Plat Nomor";
+    font-size: 2em;
+    line-height: normal;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body.page-template {
+    font-size: 11px;
+  }
+  .page-hero {
+    height: 100vh;
+  }
+  .vijay-home {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+  .vijay-home img {
+    max-width: 100%;
+  }
+  .look-here img {
+    max-width: 60%;
+  }
+  .trophy-outer-wrapper img {
+    max-width: 60%;
+  }
+  .page-template .heading-normal br:not(.unhide) {
+    display: none;
+  }
+  .trophy-inner-wrapper {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+  .hor-reel {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+  .hor-reel img {
+    max-width: 100%;
+  }
+  .phil-mirror img {
+    max-width: 80%;
+  }
+  .our-philosophy {
+    width: calc(100% + 1.5rem);
+    max-width: none;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .helicopter img {
+    max-width: 50vw;
+  }
+
+  .contact-page .page-hero::before {
+    display: none;
+  }
+}
+
+/* ==================================================================
+Pop Page declarations
+================================================================== */
+
+#popup {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  cursor: pointer;
+  opacity: 1;
+  backdrop-filter: blur(5px);
+}
+.main-popup {
+  width: 85%;
+  max-width: 600px;
+  height: 60vh;
+  background-color: #db9d2e;
+  position: relative;
+  margin: 0 auto;
+  top: 12%;
+  border-radius: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.popup-navs {
+  color: #fff;
+  line-height: 2;
+  background: url(../images/talentname-bg.png) no-repeat center center
+    transparent;
+  padding: 0 2% 0 5%;
+  background-size: 100% 100%;
+  list-style: none;
+  width: 100%;
+  height: 40px;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.popup-navs p {
+  padding-left: 5%;
+  font-family: "Plat Nomor";
+  white-space: nowrap;
+}
+
+.popup-col {
+  left: 30%;
+  width: 33%;
+  position: absolute;
+  top: 15%;
+}
+.popup-tabs {
+  left: 5%;
+  position: absolute;
+  top: 45%;
+  width: 100%;
+}
+.crowd {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.crowd img {
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+@media (min-width: 800px) and (max-width: 1024px) {
+  .popup-navs {
+    width: 90%;
+  }
+  .popup-tabs {
+    width: 100%;
+  }
+  .main-popup {
+    height: 40vh;
+  }
+}
+@media (min-width: 768px) and (max-width: 800px) {
+  .popup-navs {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup-col {
+    width: 60%;
+  }
+  .popup-tabs {
+    width: 100%;
+  }
+  .main-popup {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 380px) {
+  .main-popup {
+    height: 60vh;
+  }
+}

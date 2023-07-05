@@ -1,0 +1,10 @@
+/* Events page carousel element */
+.events-page .swiper-slide {
+  padding: 0 100px;
+}
+
+@media screen and (max-width: 767px) {
+  .events-page .swiper-slide {
+    padding: 0 20px;
+  }
+}
